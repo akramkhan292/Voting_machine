@@ -1,0 +1,14 @@
+======================================================================
+
+Annotating SDF timing data:
+  Compiled SDF file:     dft_delays.sdf.X
+  Log file:              MAXIMUM
+  Backannotation scope:  voting_machine_tb.uut
+  Configuration file:    sdf.log
+  MTM control:           
+  Scale factors:         
+  Scale type:            
+xmelab: *W,SDFCFW: Errors in config file, proceeding without it: sdf.log.
+
+Time units: 1ns
+

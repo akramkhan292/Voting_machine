@@ -1,0 +1,95 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Mon Jul 22 12:44:45 2024                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v21.15-s110_1 (64bit) 09/23/2022 13:08 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: NanoRoute 21.15-s110_1 NR220912-2004/21_15-UB (database version 18.20.592) {superthreading v2.17}
+#@(#)CDS: AAE 21.15-s039 (64bit) 09/23/2022 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: CTE 21.15-s038_1 () Sep 20 2022 11:42:13 ( )
+#@(#)CDS: SYNTECH 21.15-s012_1 () Sep  5 2022 10:25:51 ( )
+#@(#)CDS: CPE v21.15-s076
+#@(#)CDS: IQuantus/TQuantus 21.1.1-s867 (64bit) Sun Jun 26 22:12:54 PDT 2022 (Linux 3.10.0-693.el7.x86_64)
+
+#@ source runPnR.tcl
+#@ Begin verbose source (pre): source runPnR.tcl
+set_db init_netlist_files ../physical_design/voting_machine_netlist_dft.v
+set_db init_lef_files {../lef/gsclib045_tech.lef ../lef/gsclib045_macro.lef}
+set_db init_power_nets VDD
+set_db init_ground_nets VSS
+set_db init_mmmc_files  voting_machine.view
+read_mmmc voting_machine.view
+#@ Begin verbose source voting_machine.view (pre)
+create_library_set -name max_timing\
+   -timing ../lib/slow_vdd1v0_basicCells.lib
+create_library_set -name min_timing\
+   -timing ../lib/fast_vdd1v0_basicCells.lib
+create_timing_condition -name default_mapping_tc_2\
+   -library_sets min_timing
+create_timing_condition -name default_mapping_tc_1\
+   -library_sets max_timing
+create_rc_corner -name rccorners\
+   -cap_table ../captable/cln28hpl_1p10m+alrdl_5x2yu2yz_typical.capTbl\
+   -pre_route_res 1\
+   -post_route_res 1\
+   -pre_route_cap 1\
+   -post_route_cap 1\
+   -post_route_cross_cap 1\
+   -pre_route_clock_res 0\
+   -pre_route_clock_cap 0\
+   -qrc_tech ../QRC_Tech/gpdk045.tch
+create_delay_corner -name max_delay\
+   -timing_condition {default_mapping_tc_1}\
+   -rc_corner rccorners
+create_delay_corner -name min_delay\
+   -timing_condition {default_mapping_tc_2}\
+   -rc_corner rccorners
+create_constraint_mode -name sdc_cons\
+   -sdc_files\
+    voting_machine_sdc.sdc 
+create_analysis_view -name wc -constraint_mode sdc_cons -delay_corner max_delay
+create_analysis_view -name bc -constraint_mode sdc_cons -delay_corner min_delay
+set_analysis_view -setup wc -hold bc
+#@ End verbose source voting_machine.view
+read_physical -lef {../lef/gsclib045_tech.lef ../lef/gsclib045_macro.lef}
+read_netlist ../physical_design/voting_machine_netlist_dft.v -top voting_machine
+init_design
+connect_global_net VDD -type pg_pin -pin_base_name VDD -inst_base_name *
+connect_global_net VSS -type pg_pin -pin_base_name VSS -inst_base_name *
+create_floorplan -core_margins_by die -site CoreSite -core_density_size 1 0.4 2.5 2.5 2.5 2.5
+read_io_file pins.io
+set_db add_rings_skip_shared_inner_ring none ;
+set_db add_rings_avoid_short 1 ;
+set_db add_rings_ignore_rows 0 ;
+set_db add_rings_extend_over_row 0
+add_rings -type core_rings -jog_distance 0.6 -threshold 0.6 -nets {VDD VSS} -follow core -layer {bottom Metal11 top Metal11 right Metal10 left Metal10} -width 0.7 -spacing .4 -offset 0.6
+add_stripes -block_ring_top_layer_limit Metal11 -max_same_layer_jog_length 0.44 -pad_core_ring_bottom_layer_limit Metal9 -set_to_set_distance 5 -pad_core_ring_top_layer_limit Metal11 -spacing 0.4 -merge_stripes_value 0.6 -layer Metal10 -block_ring_bottom_layer_limit Metal9 -width 0.3 -nets {VDD VSS} 
+route_special -connect core_pin -layer_change_range { Metal1(1) Metal11(11) } -block_pin_target nearest_target -core_pin_target first_after_row_end -allow_jogging 1 -crossover_via_layer_range { Metal1(1) Metal11(11) } -nets { VDD VSS } -allow_layer_change 1 -target_via_layer_range { Metal1(1) Metal11(11) }
+read_def voting_machine.scandef
+set_db reorder_scan_comp_logic true
+place_opt_design
+write_db placeOpt 
+create_clock_tree_spec
+ccopt_design 
+write_db postCTSopt
+set_db route_design_with_timing_driven 1
+set_db route_design_with_si_driven 1
+set_db design_top_routing_layer Metal11
+set_db design_bottom_routing_layer Metal1
+set_db route_design_detail_end_iteration 0
+set_db route_design_with_timing_driven true
+set_db route_design_with_si_driven true
+route_design -global_detail
+reset_parasitics
+extract_rc
+#@ End verbose source: runPnR.tcl
+set_db timing_analysis_type ocv
+time_design -post_route
+time_design -post_route -hold
+gui_show
+report_timing -output_format gtd -max_paths 10000 -max_slack 0.75 -path_exceptions all -early > top.mtarpt
+read_timing_debug_report -name default_report top.mtarpt -max_path_num 10000 -update_category 0
+time_design -post_route -hold
+gui_select -point {-2.95900 13.46150}

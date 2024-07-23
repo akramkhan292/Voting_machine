@@ -1,0 +1,9 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+voting_machine.v
+voting_machine_tb.v
+-access
++rwc
+-gui

@@ -1,0 +1,53 @@
+xrun(64): 22.09-s003: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	22.09-s003: Started on Jul 18, 2024 at 12:21:19 IST
+xrun
+	voting_machine.v
+	voting_machine_tb.v
+	-access +rwc
+	-gui
+file: voting_machine.v
+	module worklib.voting_machine:v
+		errors: 0, warnings: 0
+file: voting_machine_tb.v
+	module worklib.voting_machine_tb:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		voting_machine_tb
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.voting_machine:v <0x124efd91>
+			streams:   7, words:  3083
+		worklib.voting_machine_tb:v <0x606b9598>
+			streams:   9, words: 18628
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		              Instances  Unique
+		Modules:              2       2
+		Registers:           11      11
+		Scalar wires:         8       -
+		Vectored wires:       4       -
+		Always blocks:        4       4
+		Initial blocks:       2       2
+		Cont. assignments:    3       6
+		Pseudo assignments:   6       6
+	Writing initial simulation snapshot: worklib.voting_machine_tb:v
+xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /home/install/XCELIUM2209/tools/xcelium/files/xmsimrc
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm voting_machine_tb.candidate_1 voting_machine_tb.candidate_2 voting_machine_tb.candidate_3 voting_machine_tb.clk voting_machine_tb.count_candidate_1 voting_machine_tb.count_candidate_2 voting_machine_tb.count_candidate_3 voting_machine_tb.in_candidate_1 voting_machine_tb.in_candidate_2 voting_machine_tb.in_candidate_3 voting_machine_tb.mode voting_machine_tb.reset
+Created probe 1
+xcelium> reset
+Loaded snapshot worklib.voting_machine_tb:v
+xcelium> run
+Simulation interrupted at 62801520 NS + 0
+xcelium> ^C
+xcelium> exit
+TOOL:	xrun(64)	22.09-s003: Exiting on Jul 18, 2024 at 12:41:01 IST  (total: 00:19:42)

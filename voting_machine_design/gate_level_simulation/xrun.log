@@ -1,0 +1,73 @@
+xrun(64): 22.09-s003: (c) Copyright 1995-2022 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	22.09-s003: Started on Jul 22, 2024 at 11:43:36 IST
+xrun
+	-timescale 1ns/10ps
+	voting_machine_netlist.v
+	voting_machine_tb.v
+	-v slow_vdd1v0_basicCells.v
+	-access +rwc
+	-define SDF_TEST
+	-mess
+	-gui
+file: voting_machine_netlist.v
+	module worklib.voting_machine:v
+		errors: 0, warnings: 0
+file: voting_machine_tb.v
+	module worklib.voting_machine_tb:v
+		errors: 0, warnings: 0
+file: slow_vdd1v0_basicCells.v
+	module slow_vdd1v0_basicCells.DFFHQX1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.DFFQXL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.OAI21X1:v
+		errors: 0, warnings: 0
+		Caching library 'slow_vdd1v0_basicCells' ....... Done
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		voting_machine_tb
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.voting_machine:v <0x3f3c771d>
+			streams:   0, words:     0
+		worklib.voting_machine_tb:v <0x1e4b8258>
+			streams:   9, words: 18716
+		slow_vdd1v0_basicCells.DFFHQX1:v <0x5c11f729>
+			streams:   0, words:     0
+		slow_vdd1v0_basicCells.DFFQXL:v <0x538ee7b3>
+			streams:   0, words:     0
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                    Instances  Unique
+		Modules:                  129      15
+		UDPs:                      56       2
+		Primitives:               230       5
+		Timing outputs:           127      13
+		Registers:                 34      10
+		Scalar wires:             163       -
+		Expanded wires:             2       1
+		Always blocks:              1       1
+		Initial blocks:             2       2
+		Cont. assignments:          0       3
+		Pseudo assignments:         6       6
+		Timing checks:            168       -
+		Delayed tcheck signals:    56      29
+		Simulation timescale:    10ps
+	Writing initial simulation snapshot: worklib.voting_machine_tb:v
+xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /home/install/XCELIUM2209/tools/xcelium/files/xmsimrc
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm voting_machine_tb.candidate_1 voting_machine_tb.candidate_2 voting_machine_tb.candidate_3 voting_machine_tb.clk voting_machine_tb.count_candidate_1 voting_machine_tb.count_candidate_2 voting_machine_tb.count_candidate_3 voting_machine_tb.in_candidate_1 voting_machine_tb.in_candidate_2 voting_machine_tb.in_candidate_3 voting_machine_tb.mode voting_machine_tb.reset
+Created probe 1
+xcelium> run
+Simulation interrupted at 65865670 NS + 0
+xcelium> ^C
+xcelium> exit
+TOOL:	xrun(64)	22.09-s003: Exiting on Jul 22, 2024 at 12:33:59 IST  (total: 00:50:23)

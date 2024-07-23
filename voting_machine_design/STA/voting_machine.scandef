@@ -1,0 +1,45 @@
+VERSION 5.5 ;
+NAMESCASESENSITIVE ON ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN voting_machine ;
+
+SCANCHAINS 1 ;
+  - top_chain_seg1_clk_rising 
+    + PARTITION p_clk_rising 
+      MAXBITS 28
+    + START PIN scan_in
+    + FLOATING 
+       next_state_reg[0] ( IN SI ) ( OUT Q ) 
+       next_state_reg[1] ( IN SI ) ( OUT Q ) 
+       state_reg[0] ( IN SI ) ( OUT Q ) 
+       state_reg[1] ( IN SI ) ( OUT Q ) 
+       vote_1_reg[0] ( IN SI ) ( OUT Q ) 
+       vote_1_reg[1] ( IN SI ) ( OUT Q ) 
+       vote_1_reg[2] ( IN SI ) ( OUT Q ) 
+       vote_1_reg[3] ( IN SI ) ( OUT Q ) 
+       vote_1_reg[4] ( IN SI ) ( OUT Q ) 
+       vote_1_reg[5] ( IN SI ) ( OUT Q ) 
+       vote_1_reg[6] ( IN SI ) ( OUT Q ) 
+       vote_1_reg[7] ( IN SI ) ( OUT Q ) 
+       vote_2_reg[0] ( IN SI ) ( OUT Q ) 
+       vote_2_reg[1] ( IN SI ) ( OUT Q ) 
+       vote_2_reg[2] ( IN SI ) ( OUT Q ) 
+       vote_2_reg[3] ( IN SI ) ( OUT Q ) 
+       vote_2_reg[4] ( IN SI ) ( OUT Q ) 
+       vote_2_reg[5] ( IN SI ) ( OUT Q ) 
+       vote_2_reg[6] ( IN SI ) ( OUT Q ) 
+       vote_2_reg[7] ( IN SI ) ( OUT Q ) 
+       vote_3_reg[0] ( IN SI ) ( OUT Q ) 
+       vote_3_reg[1] ( IN SI ) ( OUT Q ) 
+       vote_3_reg[2] ( IN SI ) ( OUT Q ) 
+       vote_3_reg[3] ( IN SI ) ( OUT Q ) 
+       vote_3_reg[4] ( IN SI ) ( OUT Q ) 
+       vote_3_reg[5] ( IN SI ) ( OUT Q ) 
+       vote_3_reg[6] ( IN SI ) ( OUT Q ) 
+       vote_3_reg[7] ( IN SI ) ( OUT Q ) 
+    + STOP PIN scan_out
+;
+
+END SCANCHAINS 
+END DESIGN 

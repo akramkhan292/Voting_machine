@@ -1,0 +1,4 @@
+1721287611 /home/nilet/akram/voting_machine/counter_design_database_45nm/gate_level_simulation/voting_machine_netlist_dft.v
+1721286820 /home/nilet/akram/voting_machine/counter_design_database_45nm/gate_level_simulation/voting_machine_netlist.v
+1721285401 /home/nilet/akram/voting_machine/counter_design_database_45nm/gate_level_simulation/voting_machine_tb.v
+1607012394 /home/nilet/akram/voting_machine/counter_design_database_45nm/gate_level_simulation/slow_vdd1v0_basicCells.v

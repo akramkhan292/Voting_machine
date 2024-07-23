@@ -1,0 +1,317 @@
+[07/22 12:20:14      0s] 
+[07/22 12:20:14      0s] Cadence Innovus(TM) Implementation System.
+[07/22 12:20:14      0s] Copyright 2021 Cadence Design Systems, Inc. All rights reserved worldwide.
+[07/22 12:20:14      0s] 
+[07/22 12:20:14      0s] Version:	v21.15-s110_1, built Fri Sep 23 13:08:12 PDT 2022
+[07/22 12:20:14      0s] Options:	-stylus 
+[07/22 12:20:14      0s] Date:		Mon Jul 22 12:20:10 2024
+[07/22 12:20:14      0s] Host:		c8 (x86_64 w/Linux 4.18.0-425.3.1.el8.x86_64) (10cores*12cpus*12th Gen Intel(R) Core(TM) i7-1265U 12288KB)
+[07/22 12:20:14      0s] OS:		Red Hat Enterprise Linux release 8.7 (Ootpa)
+[07/22 12:20:14      0s] 
+[07/22 12:20:14      0s] License:
+[07/22 12:20:14      0s] 		[12:20:14.436561] Configured Lic search path (21.01-s002): 5280@nielit
+[07/22 12:20:14      0s] 
+[07/22 12:20:14      0s] 		invs	Innovus Implementation System	21.1	checkout succeeded
+[07/22 12:20:14      0s] 		8 CPU jobs allowed with the current license(s). Use set_multi_cpu_usage to set your required CPU count.
+[07/22 12:20:19      4s] 
+[07/22 12:20:19      4s] 
+[07/22 12:20:22      7s] Reset Parastics called with the command setExtractRCMode -reset@(#)CDS: Innovus v21.15-s110_1 (64bit) 09/23/2022 13:08 (Linux 3.10.0-693.el7.x86_64)
+[07/22 12:20:23      8s] @(#)CDS: NanoRoute 21.15-s110_1 NR220912-2004/21_15-UB (database version 18.20.592) {superthreading v2.17}
+[07/22 12:20:23      8s] @(#)CDS: AAE 21.15-s039 (64bit) 09/23/2022 (Linux 3.10.0-693.el7.x86_64)
+[07/22 12:20:23      8s] @(#)CDS: CTE 21.15-s038_1 () Sep 20 2022 11:42:13 ( )
+[07/22 12:20:23      8s] @(#)CDS: SYNTECH 21.15-s012_1 () Sep  5 2022 10:25:51 ( )
+[07/22 12:20:23      8s] @(#)CDS: CPE v21.15-s076
+[07/22 12:20:23      8s] @(#)CDS: IQuantus/TQuantus 21.1.1-s867 (64bit) Sun Jun 26 22:12:54 PDT 2022 (Linux 3.10.0-693.el7.x86_64)
+[07/22 12:20:23      8s] @(#)CDS: OA 22.60-p076 Wed May 18 13:45:29 2022
+[07/22 12:20:23      8s] @(#)CDS: SGN 20.10-d001 (01-Jun-2020) (64 bit executable, Qt5.9.0)
+[07/22 12:20:23      8s] @(#)CDS: RCDB 11.15.0
+[07/22 12:20:23      8s] @(#)CDS: STYLUS 21.12-s013_1 (08/15/2022 08:25 PDT)
+[07/22 12:20:23      8s] @(#)CDS: SystemPlanner-21.15Rel-8720 (21.15) (2022-08-22 18:31:54+0800)
+[07/22 12:20:23      8s] Create and set the environment variable TMPDIR to /tmp/innovus_temp_15104_c8_nilet_EYvo0v.
+
+[07/22 12:20:23      8s] Create and set the environment variable TMPDIR to /tmp/innovus_temp_15104_c8_nilet_EYvo0v.
+[07/22 12:20:23      8s] 
+[07/22 12:20:23      8s] Change the soft stacksize limit to 0.2%RAM (63 mbytes). Set global soft_stack_size_limit to change the value.
+[07/22 12:20:25      8s] [INFO] Loading PVS 22.20 fill procedures
+[07/22 12:20:26      9s] 
+[07/22 12:20:26      9s] **INFO:  MMMC transition support version v31-84 
+[07/22 12:20:26      9s] 
+[07/22 12:20:28     11s] @innovus 1> set_db init_power_nets VDD
+[07/22 12:21:28     22s] @innovus 2> set_db init_ground_nets VSS
+[07/22 12:21:28     22s] @innovus 3> #################################
+[07/22 12:21:28     22s] read_mmmc voting_machine.view
+[07/22 12:21:28     22s] #################################
+[07/22 12:21:28     22s] #@ Begin verbose source voting_machine.view (pre)
+[07/22 12:21:28     22s] @file 1:
+[07/22 12:21:28     22s] @@file 2: create_library_set -name max_timing\
+[07/22 12:21:28     22s]    -timing ../lib/slow_vdd1v0_basicCells.lib
+[07/22 12:21:28     22s] @file 4:
+[07/22 12:21:28     22s] @@file 5: create_library_set -name min_timing\
+[07/22 12:21:28     22s]    -timing ../lib/fast_vdd1v0_basicCells.lib
+[07/22 12:21:28     22s] @file 7:
+[07/22 12:21:28     22s] @@file 8: create_timing_condition -name default_mapping_tc_2\
+[07/22 12:21:28     22s]    -library_sets min_timing
+[07/22 12:21:28     22s] @@file 10: create_timing_condition -name default_mapping_tc_1\
+[07/22 12:21:28     22s]    -library_sets max_timing
+[07/22 12:21:28     22s] @file 12:
+[07/22 12:21:28     22s] @@file 13: create_rc_corner -name rccorners\
+[07/22 12:21:28     22s]    -cap_table ../captable/cln28hpl_1p10m+alrdl_5x2yu2yz_typical.capTbl\
+[07/22 12:21:28     22s]    -pre_route_res 1\
+[07/22 12:21:28     22s]    -post_route_res 1\
+[07/22 12:21:28     22s]    -pre_route_cap 1\
+[07/22 12:21:28     22s]    -post_route_cap 1\
+[07/22 12:21:28     22s]    -post_route_cross_cap 1\
+[07/22 12:21:28     22s]    -pre_route_clock_res 0\
+[07/22 12:21:28     22s]    -pre_route_clock_cap 0\
+[07/22 12:21:28     22s]    -qrc_tech ../QRC_Tech/gpdk045.tch
+[07/22 12:21:28     22s] @file 23:
+[07/22 12:21:28     22s] @@file 24: create_delay_corner -name max_delay\
+[07/22 12:21:28     22s]    -timing_condition {default_mapping_tc_1}\
+[07/22 12:21:28     22s]    -rc_corner rccorners
+[07/22 12:21:28     22s] @@file 27: create_delay_corner -name min_delay\
+[07/22 12:21:28     22s]    -timing_condition {default_mapping_tc_2}\
+[07/22 12:21:28     22s]    -rc_corner rccorners
+[07/22 12:21:28     22s] @file 30:
+[07/22 12:21:28     22s] @@file 31: create_constraint_mode -name sdc_cons\
+[07/22 12:21:28     22s]    -sdc_files\
+[07/22 12:21:28     22s]     voting_machine_sdc.sdc 
+[07/22 12:21:28     22s] @file 34:
+[07/22 12:21:28     22s] @@file 35: create_analysis_view -name wc -constraint_mode sdc_cons -delay_corner max_delay
+[07/22 12:21:28     22s] @@file 36: create_analysis_view -name bc -constraint_mode sdc_cons -delay_corner min_delay
+[07/22 12:21:28     22s] @file 37:
+[07/22 12:21:28     22s] @@file 38: set_analysis_view -setup wc -hold bc
+[07/22 12:21:28     22s] @file 39:
+[07/22 12:21:28     22s] @file 40:
+[07/22 12:21:28     22s] #@ End verbose source voting_machine.view
+[07/22 12:21:28     22s] Reading max_timing timing library '/home/nilet/akram/voting_machine/counter_design_database_45nm/lib/slow_vdd1v0_basicCells.lib' ...
+[07/22 12:21:29     22s] **WARN: (TECHLIB-302):	No function defined for cell 'ANTENNA'. The cell will only be used for analysis. (File /home/nilet/akram/voting_machine/counter_design_database_45nm/lib/slow_vdd1v0_basicCells.lib)
+[07/22 12:21:29     22s] Read 480 cells in library 'slow_vdd1v0' 
+[07/22 12:21:29     22s] Reading min_timing timing library '/home/nilet/akram/voting_machine/counter_design_database_45nm/lib/fast_vdd1v0_basicCells.lib' ...
+[07/22 12:21:29     22s] **WARN: (TECHLIB-302):	No function defined for cell 'ANTENNA'. The cell will only be used for analysis. (File /home/nilet/akram/voting_machine/counter_design_database_45nm/lib/fast_vdd1v0_basicCells.lib)
+[07/22 12:21:29     22s] Read 480 cells in library 'fast_vdd1v0' 
+[07/22 12:21:29     22s] Ending "PreSetAnalysisView" (total cpu=0:00:00.5, real=0:00:01.0, peak res=1061.2M, current mem=1009.5M)
+[07/22 12:21:29     22s] #################################
+[07/22 12:21:29     22s] read_physical -lef {../lef/gsclib045_tech.lef ../lef/gsclib045_macro.lef}
+[07/22 12:21:29     22s] #################################
+[07/22 12:21:29     22s] 
+[07/22 12:21:29     22s] Loading LEF file ../lef/gsclib045_tech.lef ...
+[07/22 12:21:29     22s] 
+[07/22 12:21:29     22s] Loading LEF file ../lef/gsclib045_macro.lef ...
+[07/22 12:21:29     22s] Set DBUPerIGU to M2 pitch 400.
+[07/22 12:21:29     23s] **WARN: (IMPLF-200):	Pin 'A' in macro 'ANTENNA' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[07/22 12:21:29     23s] Type 'man IMPLF-200' for more detail.
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] ##  Check design process and node:  
+[07/22 12:21:29     23s] ##  Both design process and tech node are not set.
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] #################################
+[07/22 12:21:29     23s] read_netlist voting_machine_netlist.v
+[07/22 12:21:29     23s] #################################
+[07/22 12:21:29     23s] #% Begin Load netlist data ... (date=07/22 12:21:29, mem=1021.0M)
+[07/22 12:21:29     23s] *** Begin netlist parsing (mem=1060.4M) ***
+[07/22 12:21:29     23s] Created 480 new cells from 2 timing libraries.
+[07/22 12:21:29     23s] Reading netlist ...
+[07/22 12:21:29     23s] Backslashed names will retain backslash and a trailing blank character.
+[07/22 12:21:29     23s] Reading verilog netlist 'voting_machine_netlist.v'
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] *** Memory Usage v#1 (Current mem = 1063.434M, initial mem = 491.863M) ***
+[07/22 12:21:29     23s] *** End netlist parsing (cpu=0:00:00.0, real=0:00:00.0, mem=1063.4M) ***
+[07/22 12:21:29     23s] #% End Load netlist data ... (date=07/22 12:21:29, total cpu=0:00:00.0, real=0:00:00.0, peak res=1035.1M, current mem=1035.1M)
+[07/22 12:21:29     23s] Top level cell is voting_machine.
+[07/22 12:21:29     23s] Hooked 960 DB cells to tlib cells.
+[07/22 12:21:29     23s] Ending "BindLib:" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1050.1M, current mem=1050.1M)
+[07/22 12:21:29     23s] Starting recursive module instantiation check.
+[07/22 12:21:29     23s] No recursion found.
+[07/22 12:21:29     23s] Building hierarchical netlist for Cell voting_machine ...
+[07/22 12:21:29     23s] *** Netlist is unique.
+[07/22 12:21:29     23s] Setting Std. cell height to 3420 DBU (smallest netlist inst).
+[07/22 12:21:29     23s] ** info: there are 1055 modules.
+[07/22 12:21:29     23s] ** info: there are 127 stdCell insts.
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] *** Memory Usage v#1 (Current mem = 1123.848M, initial mem = 491.863M) ***
+[07/22 12:21:29     23s] **WARN: (IMPFP-3961):	The techSite 'CornerSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+[07/22 12:21:29     23s] Type 'man IMPFP-3961' for more detail.
+[07/22 12:21:29     23s] **WARN: (IMPFP-3961):	The techSite 'IOSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+[07/22 12:21:29     23s] Type 'man IMPFP-3961' for more detail.
+[07/22 12:21:29     23s] Start create_tracks
+[07/22 12:21:29     23s] Extraction setup Started 
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] Trim Metal Layers:
+[07/22 12:21:29     23s] Initializing multi-corner RC extraction with 1 active RC Corners ...
+[07/22 12:21:29     23s] **WARN: (IMPEXT-6202):	In addition to the technology file, the capacitance table file is specified for all the RC corners. If the technology file  is already specified for all the RC corners, the capacitance table file is not required for pre_route and post_route extraction. In a new session, the capacitance table files can be removed from the create_rc_corner command to enable the technology file to be used for pre_route and post_route (effort level medium/high/signoff) extraction engines.
+[07/22 12:21:29     23s] Type 'man IMPEXT-6202' for more detail.
+[07/22 12:21:29     23s] Reading Capacitance Table File ../captable/cln28hpl_1p10m+alrdl_5x2yu2yz_typical.capTbl ...
+[07/22 12:21:29     23s] Cap table was created using Encounter 10.10-b056_1.
+[07/22 12:21:29     23s] Process name: cln28hpl_1p10m+alrdl_5x2yu2yz_typical.
+[07/22 12:21:29     23s] Set Shrink Factor to 0.90000
+[07/22 12:21:29     23s] Importing multi-corner RC tables ... 
+[07/22 12:21:29     23s] Summary of Active RC-Corners : 
+[07/22 12:21:29     23s]  
+[07/22 12:21:29     23s]  Analysis View: wc
+[07/22 12:21:29     23s]     RC-Corner Name        : rccorners
+[07/22 12:21:29     23s]     RC-Corner Index       : 0
+[07/22 12:21:29     23s]     RC-Corner Temperature : 25 Celsius
+[07/22 12:21:29     23s]     RC-Corner Cap Table   : '../captable/cln28hpl_1p10m+alrdl_5x2yu2yz_typical.capTbl'
+[07/22 12:21:29     23s]     RC-Corner PreRoute Res Factor         : 1
+[07/22 12:21:29     23s]     RC-Corner PreRoute Cap Factor         : 1
+[07/22 12:21:29     23s]     RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+[07/22 12:21:29     23s]     RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+[07/22 12:21:29     23s]     RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+[07/22 12:21:29     23s]     RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+[07/22 12:21:29     23s]     RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+[07/22 12:21:29     23s]     RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+[07/22 12:21:29     23s]     RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+[07/22 12:21:29     23s]     RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+[07/22 12:21:29     23s]     RC-Corner Technology file: '../QRC_Tech/gpdk045.tch'
+[07/22 12:21:29     23s]  
+[07/22 12:21:29     23s]  Analysis View: bc
+[07/22 12:21:29     23s]     RC-Corner Name        : rccorners
+[07/22 12:21:29     23s]     RC-Corner Index       : 0
+[07/22 12:21:29     23s]     RC-Corner Temperature : 25 Celsius
+[07/22 12:21:29     23s]     RC-Corner Cap Table   : '../captable/cln28hpl_1p10m+alrdl_5x2yu2yz_typical.capTbl'
+[07/22 12:21:29     23s]     RC-Corner PreRoute Res Factor         : 1
+[07/22 12:21:29     23s]     RC-Corner PreRoute Cap Factor         : 1
+[07/22 12:21:29     23s]     RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+[07/22 12:21:29     23s]     RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+[07/22 12:21:29     23s]     RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+[07/22 12:21:29     23s]     RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+[07/22 12:21:29     23s]     RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+[07/22 12:21:29     23s]     RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+[07/22 12:21:29     23s]     RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+[07/22 12:21:29     23s]     RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+[07/22 12:21:29     23s]     RC-Corner Technology file: '../QRC_Tech/gpdk045.tch'
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] Trim Metal Layers:
+[07/22 12:21:29     23s] LayerId::1 widthSet size::4
+[07/22 12:21:29     23s] LayerId::2 widthSet size::4
+[07/22 12:21:29     23s] LayerId::3 widthSet size::4
+[07/22 12:21:29     23s] LayerId::4 widthSet size::4
+[07/22 12:21:29     23s] LayerId::5 widthSet size::4
+[07/22 12:21:29     23s] LayerId::6 widthSet size::4
+[07/22 12:21:29     23s] LayerId::7 widthSet size::5
+[07/22 12:21:29     23s] LayerId::8 widthSet size::5
+[07/22 12:21:29     23s] LayerId::9 widthSet size::5
+[07/22 12:21:29     23s] LayerId::10 widthSet size::4
+[07/22 12:21:29     23s] LayerId::11 widthSet size::3
+[07/22 12:21:29     23s] eee: pegSigSF::1.070000
+[07/22 12:21:29     23s] Updating RC grid for preRoute extraction ...
+[07/22 12:21:29     23s] Initializing multi-corner capacitance tables ... 
+[07/22 12:21:29     23s] Initializing multi-corner resistance tables ...
+[07/22 12:21:29     23s] Creating RPSQ from WeeR and WRes ...
+[07/22 12:21:29     23s] eee: l::1 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[07/22 12:21:29     23s] eee: l::2 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[07/22 12:21:29     23s] eee: l::3 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[07/22 12:21:29     23s] eee: l::4 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[07/22 12:21:29     23s] eee: l::5 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[07/22 12:21:29     23s] eee: l::6 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[07/22 12:21:29     23s] eee: l::7 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[07/22 12:21:29     23s] eee: l::8 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[07/22 12:21:29     23s] eee: l::9 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[07/22 12:21:29     23s] eee: l::10 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[07/22 12:21:29     23s] eee: l::11 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[07/22 12:21:29     23s] {RT rccorners 0 11 11 {7 0} {10 0} 2}
+[07/22 12:21:29     23s] eee: LAM: n=40 LLS=2-3 HLS=3-5 rDens=0.000000 uaWl=0.000000 uaWlH=0.000000 aWlH=0.000000 lMod=0 pMax=0.850000 pMod=82 wcR=0.772700 newSi=0.000000 wHLS=1.931750 siPrev=0 viaL=0.000000
+[07/22 12:21:29     23s] *Info: initialize multi-corner CTS.
+[07/22 12:21:29     23s] Ending "SetAnalysisView" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1313.5M, current mem=1080.8M)
+[07/22 12:21:29     23s] Reading timing constraints file 'voting_machine_sdc.sdc' ...
+[07/22 12:21:29     23s] Current (total cpu=0:00:23.4, real=0:01:19, peak res=1336.2M, current mem=1336.2M)
+[07/22 12:21:29     23s] **WARN: (TCLCMD-1461):	Skipped unsupported command: set_units (File voting_machine_sdc.sdc, Line 9).
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] **WARN: (TCLCMD-1461):	Skipped unsupported command: set_units (File voting_machine_sdc.sdc, Line 10).
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] voting_machine
+[07/22 12:21:29     23s] INFO (CTE): Reading of timing constraints file voting_machine_sdc.sdc completed, with 2 WARNING
+[07/22 12:21:29     23s] Ending "Constraint file reading stats" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1347.0M, current mem=1347.0M)
+[07/22 12:21:29     23s] Current (total cpu=0:00:23.4, real=0:01:19, peak res=1347.0M, current mem=1347.0M)
+[07/22 12:21:29     23s] Tech dependent Parameter, Build TLibAnalyzer for: cellAreaConsiderPadding
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] TimeStamp Creating Cell Server ...(0, 1, 1, 1) Begin ...
+[07/22 12:21:29     23s] Summary for sequential cells identification: 
+[07/22 12:21:29     23s]   Identified SBFF number: 104
+[07/22 12:21:29     23s]   Identified MBFF number: 0
+[07/22 12:21:29     23s]   Identified SB Latch number: 0
+[07/22 12:21:29     23s]   Identified MB Latch number: 0
+[07/22 12:21:29     23s]   Not identified SBFF number: 16
+[07/22 12:21:29     23s]   Not identified MBFF number: 0
+[07/22 12:21:29     23s]   Not identified SB Latch number: 0
+[07/22 12:21:29     23s]   Not identified MB Latch number: 0
+[07/22 12:21:29     23s]   Number of sequential cells which are not FFs: 32
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] TimeStamp Creating Cell Server ...(0, 1, 1, 1) End ...
+[07/22 12:21:29     23s] Total number of combinational cells: 318
+[07/22 12:21:29     23s] Total number of sequential cells: 152
+[07/22 12:21:29     23s] Total number of tristate cells: 10
+[07/22 12:21:29     23s] Total number of level shifter cells: 0
+[07/22 12:21:29     23s] Total number of power gating cells: 0
+[07/22 12:21:29     23s] Total number of isolation cells: 0
+[07/22 12:21:29     23s] Total number of power switch cells: 0
+[07/22 12:21:29     23s] Total number of pulse generator cells: 0
+[07/22 12:21:29     23s] Total number of always on buffers: 0
+[07/22 12:21:29     23s] Total number of retention cells: 0
+[07/22 12:21:29     23s] List of usable buffers: BUFX2 BUFX12 BUFX16 BUFX20 CLKBUFX2 BUFX3 BUFX4 BUFX6 BUFX8 CLKBUFX12 CLKBUFX16 CLKBUFX20 CLKBUFX3 CLKBUFX4 CLKBUFX6 CLKBUFX8
+[07/22 12:21:29     23s] Total number of usable buffers: 16
+[07/22 12:21:29     23s] List of unusable buffers:
+[07/22 12:21:29     23s] Total number of unusable buffers: 0
+[07/22 12:21:29     23s] List of usable inverters: CLKINVX1 CLKINVX2 CLKINVX12 CLKINVX16 CLKINVX20 CLKINVX4 CLKINVX3 CLKINVX6 CLKINVX8 INVX1 INVX2 INVX12 INVX16 INVX20 INVXL INVX3 INVX4 INVX6 INVX8
+[07/22 12:21:29     23s] Total number of usable inverters: 19
+[07/22 12:21:29     23s] List of unusable inverters:
+[07/22 12:21:29     23s] Total number of unusable inverters: 0
+[07/22 12:21:29     23s] List of identified usable delay cells: DLY1X1 DLY1X4 DLY2X1 DLY2X4 DLY3X1 DLY3X4 DLY4X1 DLY4X4
+[07/22 12:21:29     23s] Total number of identified usable delay cells: 8
+[07/22 12:21:29     23s] List of identified unusable delay cells:
+[07/22 12:21:29     23s] Total number of identified unusable delay cells: 0
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] TimeStamp Deleting Cell Server Begin ...
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] TimeStamp Deleting Cell Server End ...
+[07/22 12:21:29     23s] Ending "Cell type marking" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1377.3M, current mem=1377.3M)
+[07/22 12:21:29     23s] 
+[07/22 12:21:29     23s] TimeStamp Creating Cell Server ...(0, 0, 0, 0) Begin ...
+[07/22 12:21:30     23s] Summary for sequential cells identification: 
+[07/22 12:21:30     23s]   Identified SBFF number: 104
+[07/22 12:21:30     23s]   Identified MBFF number: 0
+[07/22 12:21:30     23s]   Identified SB Latch number: 0
+[07/22 12:21:30     23s]   Identified MB Latch number: 0
+[07/22 12:21:30     23s]   Not identified SBFF number: 16
+[07/22 12:21:30     23s]   Not identified MBFF number: 0
+[07/22 12:21:30     23s]   Not identified SB Latch number: 0
+[07/22 12:21:30     23s]   Not identified MB Latch number: 0
+[07/22 12:21:30     23s]   Number of sequential cells which are not FFs: 32
+[07/22 12:21:30     23s]  Visiting view : wc
+[07/22 12:21:30     23s]    : PowerDomain = none : Weighted F : unweighted  = 36.80 (1.000) with rcCorner = 0
+[07/22 12:21:30     23s]    : PowerDomain = none : Weighted F : unweighted  = 20.10 (1.000) with rcCorner = -1
+[07/22 12:21:30     23s]  Visiting view : bc
+[07/22 12:21:30     23s]    : PowerDomain = none : Weighted F : unweighted  = 11.90 (1.000) with rcCorner = 0
+[07/22 12:21:30     23s]    : PowerDomain = none : Weighted F : unweighted  = 5.30 (1.000) with rcCorner = -1
+[07/22 12:21:30     23s] TLC MultiMap info (StdDelay):
+[07/22 12:21:30     23s]   : min_delay + min_timing + 1 + no RcCorner := 5.3ps
+[07/22 12:21:30     23s]   : min_delay + min_timing + 1 + rccorners := 11.9ps
+[07/22 12:21:30     23s]   : max_delay + max_timing + 1 + no RcCorner := 20.1ps
+[07/22 12:21:30     23s]   : max_delay + max_timing + 1 + rccorners := 36.8ps
+[07/22 12:21:30     23s]  Setting StdDelay to: 36.8ps
+[07/22 12:21:30     23s] 
+[07/22 12:21:30     23s] TimeStamp Creating Cell Server ...(0, 0, 0, 0) End ...
+[07/22 12:21:30     23s] 
+[07/22 12:21:30     23s] TimeStamp Deleting Cell Server Begin ...
+[07/22 12:21:30     23s] 
+[07/22 12:21:30     23s] TimeStamp Deleting Cell Server End ...
+[07/22 12:22:38     36s] 
+[07/22 12:22:38     36s] --------------------------------------------------------------------------------
+[07/22 12:22:38     36s] Exiting Innovus on Mon Jul 22 12:22:38 2024
+[07/22 12:22:38     36s]   Total CPU time:     0:00:36
+[07/22 12:22:38     36s]   Total real time:    0:02:30
+[07/22 12:22:38     36s]   Peak memory (main): 1438.96MB
+[07/22 12:22:38     36s] 
+[07/22 12:22:38     36s] 
+[07/22 12:22:38     36s] *** Memory Usage v#1 (Current mem = 1541.129M, initial mem = 491.863M) ***
+[07/22 12:22:38     36s] 
+[07/22 12:22:38     36s] *** Summary of all messages that are not suppressed in this session:
+[07/22 12:22:38     36s] Severity  ID               Count  Summary                                  
+[07/22 12:22:38     36s] WARNING   IMPLF-200            1  Pin '%s' in macro '%s' has no ANTENNAGAT...
+[07/22 12:22:38     36s] WARNING   IMPFP-3961           2  The techSite '%s' has no related standar...
+[07/22 12:22:38     36s] WARNING   IMPEXT-6202          1  In addition to the technology file, the ...
+[07/22 12:22:38     36s] WARNING   TCLCMD-1461          2  Skipped unsupported command: %s          
+[07/22 12:22:38     36s] WARNING   TECHLIB-302          2  No function defined for cell '%s'. The c...
+[07/22 12:22:38     36s] *** Message Summary: 8 warning(s), 0 error(s)
+[07/22 12:22:38     36s] 
+[07/22 12:22:38     36s] --- Ending "Innovus" (totcpu=0:00:36.3, real=0:02:28, mem=1541.1M) ---

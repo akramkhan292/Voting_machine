@@ -1,0 +1,1 @@
+s1(18Jul2024:12:21:19):  xrun voting_machine.v voting_machine_tb.v -access +rwc -gui 
