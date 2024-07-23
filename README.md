@@ -1,7 +1,3 @@
-Here’s the updated GitHub repository description:
-
----
-
 # Voting Machine Design using Semi-Custom Flow
 
 ## Overview
